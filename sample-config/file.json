@@ -1,0 +1,78 @@
+{ 
+    "hydra.commands": [
+        {
+            "key": "f",
+            "desc": "File operations commands",
+            "children": [
+                {
+                    "key": "s",
+                    "desc": "Save file",
+                    "commands": [
+                        "workbench.action.files.save"
+                    ]
+                },
+                {
+                    "key": "S",
+                    "desc": "Save files advanced",
+                    "children": [
+                        {
+                            "key": "!",
+                            "desc": "Save all files",
+                            "commands": [
+                                "workbench.action.files.saveAll"
+                            ]
+                        },
+                        {
+                            "key": "a",
+                            "desc": "Save file as",
+                            "commands": [
+                                "workbench.action.files.saveAs"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "key": "n",
+                    "desc": "create new file",
+                    "commands": [
+                        "workbench.action.files.newUntitledFile"
+                    ]
+                },
+                {
+                    "key": "N",
+                    "desc": "New file - file utils extension",
+                    "children": [
+                        {
+                            "key": "n",
+                            "desc": "New file with respect to current view",
+                            "commands": [
+                                "fileutils.newFile"
+                            ]
+                        },
+                        {
+                            "key": "N",
+                            "desc": "New file at workspace root",
+                            "commands": [
+                                "fileutils.newFileAtRoot"
+                            ]
+                        },
+                        {
+                            "key": "f",
+                            "desc": "New folder with respect to current view",
+                            "commands": [
+                                "fileutils.newFolder"
+                            ]
+                        },
+                        {
+                            "key": "F",
+                            "desc": "New folder at workspace root",
+                            "commands": [
+                                "fileutils.newFolderAtRoot"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
