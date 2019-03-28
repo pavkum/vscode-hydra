@@ -1,4 +1,4 @@
-import {HydraCommandInterface, HydraCommandRuntimeInterface, HydraExecutionStatusInterface } from './hydra-command-interface';
+import {HydraCommandInterface, HydraExecutionStatusInterface } from './hydra-command-interface';
 import {HydraExecutionStatus} from './hydra-execution-status';
 import * as vscode from 'vscode';
 
@@ -20,7 +20,7 @@ export default class CommandExecuter {
         this.availableCommands = rawCommands;
     }
 
-    public execute(command:string): HydraExecutionStatusInterface {
+    public async execute(command:string): Promise<HydraExecutionStatusInterface> {
         if (!this.availableCommands.length) {
             return {
                 status: HydraExecutionStatus.NO_CONFIG
@@ -61,26 +61,39 @@ export default class CommandExecuter {
 
         if (currentCommandLevel && currentCommandLevel.children) {
             // partial command
-            this.executionContext = currentCommandLevel.children;
-            return {
-                status: HydraExecutionStatus.PARTIAL_COMMAND,
-                children: currentCommandLevel.children
-            };
+            this.executionContext = currentCommandLevel.children || [];
+
+            if (this.executionContext && this.executionContext.length) {
+                return {
+                    status: HydraExecutionStatus.PARTIAL_COMMAND,
+                    children: currentCommandLevel.children
+                };
+            } else {
+                return {
+                    status: HydraExecutionStatus.COMMAND_NOT_FOUND
+                };
+            }
         }
 
         if (currentCommandLevel && currentCommandLevel.commands) {
             // execute commands
             const commands = currentCommandLevel.commands || [];
 
-            // TODO handle async execution
-            commands.forEach(command => {
-                vscode.commands.executeCommand(command);
-            });
+            try {
+                for (const command of commands) {
+                    await vscode.commands.executeCommand(command);
+                }
 
-            this.executionContext = [];
-            return {
-                status: HydraExecutionStatus.SUCCESS
-            };
+                this.executionContext = [];
+                return {
+                    status: HydraExecutionStatus.SUCCESS
+                };
+            } catch (error) {
+                return {
+                    status: HydraExecutionStatus.ERROR
+                };
+            }
+
         } else {
             // both commands and children are absent. Nothing to execute
             this.executionContext = [];

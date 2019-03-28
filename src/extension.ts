@@ -1,22 +1,13 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as path from 'path';
-import { ConsoleColors, default as Color } from './color';
 import CommandExecutor from './commands';
 import { HydraExecutionStatus } from './hydra-execution-status';
 import { HydraQuickPick } from './hydra-quickpick';
-
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-const HYDRA_TERMINAL_ID = 'hydra';
-let shell: any;
 
 export function activate(context: vscode.ExtensionContext) {
 
 	const commandExecutor = new CommandExecutor();
 
-	function handleInput(value: string | undefined | HydraQuickPick[]) {
+	async function handleInput(value: string | undefined | HydraQuickPick[]) {
 		let userInput;
 		if (Array.isArray(value)) {
 			// means hydraQuickPick
@@ -30,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
-		const response = commandExecutor.execute(userInput);
+		const response = await commandExecutor.execute(userInput);
 		switch (response.status) {
 			case HydraExecutionStatus.SUCCESS:
 				commandExecutor.clear();
@@ -63,10 +54,12 @@ export function activate(context: vscode.ExtensionContext) {
 
 			case HydraExecutionStatus.COMMAND_NOT_FOUND:
 				commandExecutor.clear();
+				vscode.window.showErrorMessage(`Entered command ${userInput} not configured`);
 				break;
 
 			case HydraExecutionStatus.NO_CONFIG:
 				commandExecutor.clear();
+				vscode.window.showErrorMessage('Define `hydra.commands` before using');
 				break;
 		}
 	}

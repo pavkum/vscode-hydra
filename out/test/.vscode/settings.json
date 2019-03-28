@@ -1,0 +1,12 @@
+{
+    "jira-plugin.workingProject": "",
+    "hydra.commands": [
+        {
+            "key": "w",
+            "desc": "auto reload test",
+            "commands": [
+                "workbench.view.scm"
+            ]
+        }
+    ]
+}

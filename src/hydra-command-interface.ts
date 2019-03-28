@@ -11,14 +11,5 @@ export interface HydraCommandInterface {
 
 export interface HydraExecutionStatusInterface {
     status: HydraExecutionStatus;
-    children?: HydraCommandInterface[]
-}
-
-type HydraCommandRuntimeArgs = {
-    desc: string;
-    commands: string[]
-};
-
-export interface HydraCommandRuntimeInterface {
-    [key: string]: HydraCommandRuntimeArgs
+    children?: HydraCommandInterface[];
 }
