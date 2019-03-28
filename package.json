@@ -2,7 +2,7 @@
     "name": "hydra",
     "displayName": "hydra",
     "description": "An extension to chain commands",
-    "version": "0.0.3",
+    "version": "0.9.1",
     "repository": {
         "type": "git",
         "url": "https://github.com/pavkum/vscode-hydra"

@@ -1,3 +1,47 @@
 {
-
+    "key": "w",
+    "desc": "workbench commands",
+    "children": [
+        {
+            "key": "o",
+            "desc": "Open sidebar views",
+            "children": [
+                {
+                    "key": "e",
+                    "desc": "Open explorer",
+                    "commands": [
+                        "workbench.view.explorer"
+                    ]
+                },
+                {
+                    "key": "E",
+                    "desc": "Open extensions",
+                    "commands": [
+                        "workbench.view.extensions"
+                    ]
+                },
+                {
+                    "key": "s",
+                    "desc": "Open SCM",
+                    "commands": [
+                        "workbench.view.scm"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "t",
+            "desc": "Toggle commands",
+            "children": [
+                {
+                    "key": "s",
+                    "desc": "toggle side bar",
+                    "commands": [
+                        "workbench.action.toggleSidebarVisibility",
+                        "workbench.action.toggleActivityBarVisibility"
+                    ]
+                }
+            ]
+        }
+    ]
 }

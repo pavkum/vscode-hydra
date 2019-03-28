@@ -8,6 +8,14 @@ Welcome to Hydra!! A new way to use vscode with semantic keyboard shortcuts. Thi
 - no limitation on the number of keys used to define a keyboard shortcuts
 - execute multiple commands for a shortcut
 
+## Small demo
+
+- suggestions for partial commands
+  ![partial](images/hydra-suggestions.gif)
+
+- full command execution
+  ![full command](images/hydra-full.gif)
+
 ## Extension Settings
 
 The extension provides the following commands
@@ -19,13 +27,13 @@ The extension provides the following commands
 Please refer to following files for sample configuration
 
 * `File operations`: [file operations](sample-config/file.json)
-* `Sidebar operations`: '****WIP****'
+* `Workbench operations`: [workbench operations](sample-config/workbench.json)
 
 ## Roadmap
 
+- [x] Show suggestions in quick open menu
 - [ ] Ability to pass static arguments to commands
 - [ ] Ability to pass dynamic arguments to commands
-- [ ] Show suggestions in quick open menu
 
 ## Release Notes (Beta)
 
