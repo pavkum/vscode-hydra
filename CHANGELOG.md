@@ -1,9 +1,12 @@
 # Change Log
 
-All notable changes to the "hydra" extension will be documented in this file.
+Hydra change log
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.9.2]
 
-## [Unreleased]
+- Initial public release
 
-- Initial release
+## [0.9.3]
+
+- Configured alt+p as the default keyboard shortcut for invoking hydra
+- Updated readme with the information

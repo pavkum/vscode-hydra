@@ -20,9 +20,11 @@ Welcome to Hydra!! A new way to use vscode with semantic keyboard shortcuts. Thi
 
 The extension provides the following commands
 
-* `hydra.show`: opens quick input for taking input from users
+* `hydra.show`: opens quick input for taking input from users. Default shortcut `alt+p`
 
 ## Configurations
+
+* `hydra.commands`: Property for configuring hydra shortcuts
 
 Please refer to following files for sample configuration
 

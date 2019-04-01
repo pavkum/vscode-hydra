@@ -2,7 +2,7 @@
     "name": "hydra",
     "displayName": "hydra",
     "description": "An extension to chain commands",
-    "version": "0.9.2",
+    "version": "0.9.3",
     "repository": {
         "type": "git",
         "url": "https://github.com/pavkum/vscode-hydra"
@@ -33,6 +33,10 @@
                 "title": "Hydra show command"
             }
         ],
+        "keybindings":{
+            "command": "hydra.show",
+            "key": "alt+p"
+        },
         "configuration": {
             "title": "Hydra configuration",
             "type": "object",
